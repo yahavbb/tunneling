@@ -16,12 +16,12 @@ void CleanupRoutlins();
 int CleanupSig();
 
 #ifdef SERVER
-    #define IPTUN " "
+    #define IPTUN "IP_ADDRESS/16"
     #define CERT_FILE "/server.crt"
     #define KEY_FILE "/server.key"
 #else
-    #define IPTUN "IP/16"
-    #define IPSERVER " "
+    #define IPTUN "IP_ADDRESS/16"
+    #define IPSERVER "IP_ADDRESS"
     #define CLIENT 1
     #define CERT_FILE "/client.crt"
     #define KEY_FILE "/client.key"
