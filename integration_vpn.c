@@ -27,7 +27,7 @@ int max(int x, int y)
     return x > y ? x : y;
 }
 
-int main()
+int main(int argc, char* argv[]) 
 {
     fd_set rfds;
     char tunname[24] = "tun0";
@@ -36,7 +36,24 @@ int main()
     int maxfdp = 0;
     SSL_CTX *ctx = init_ssl();
     SSL *ssl = NULL;
-
+    for (int i = 1; i < argc; i++) 
+    {
+        if (strcmp(argv[i], "--server") == 0)
+        {
+#undef SERVER
+#define SERVER 1
+            break;
+        }
+    }
+    if (SERVER) 
+    {   
+        printf("Running in server mode\n");
+    }
+        else 
+    {
+         printf("Running in client mode\n");
+    }
+    
     if (0 > tun_fd)
     {
         return EXIT_FAILURE;
